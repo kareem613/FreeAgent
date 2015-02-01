@@ -5,6 +5,9 @@ obj
 # mstest test results
 TestResults
 _ReSharper.*
+*.user
+*.suo
+*ncrunch*
 
 ConsoleRunner/KeyStorage.cs
 FreeAgent.Tests/KeyStorage.cs
