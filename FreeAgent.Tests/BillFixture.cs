@@ -18,7 +18,7 @@ namespace FreeAgent.Tests
 		
 		public IEnumerable<Bill> BillAll()
 		{
-			return Client.Bill.All(view: "recent");
+			return Client.Bill.All();
 		}
 		
 		public override ResourceClient<BillWrapper, BillsWrapper, Bill> ResourceClient
