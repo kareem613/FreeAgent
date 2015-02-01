@@ -16,7 +16,7 @@ namespace FreeAgent
         {
 
 
-            _restClient.BaseUrl = BaseUrl;
+            _restClient.BaseUrl = new Uri(BaseUrl);
 
             var request = _requestHelper.CreateAccessTokenRequest(code, redirectUri);
 
@@ -34,7 +34,7 @@ namespace FreeAgent
 
         public AccessToken RefreshAccessToken()
         {
-            _restClient.BaseUrl = BaseUrl;
+            _restClient.BaseUrl = new Uri(BaseUrl);
 
             var request = _requestHelper.CreateRefreshTokenRequest();
             var response = Execute<AccessToken>(request);
