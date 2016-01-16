@@ -136,7 +136,7 @@ namespace FreeAgent
 
 		public double rebill_factor { get; set; }
 
-		public ExpenseAttachment attachment  { get; set; }
+        public BankTransactionExplanationAttachmentPutModel attachment { get; set; }
 
 		/* public string receipt_reference { get; set; }
 
@@ -151,6 +151,15 @@ namespace FreeAgent
 */
 
 	}
+
+    public class BankTransactionExplanationAttachmentPutModel
+    {
+        public string data { get; set; }
+        public string file_name { get; set; }
+        public string description { get; set; }
+        public string content_type { get; set; }
+        
+    }
 
 	public class BankTransactionExplanationWrapper
 	{
