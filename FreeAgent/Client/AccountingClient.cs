@@ -17,9 +17,9 @@ namespace FreeAgent
 		}
 
 
-		public List<TrialBalanceSummary> TrialBalanceSummary()
+		public List<TrialBalanceSummary> TrialBalanceSummary(DateTime date)
 		{
-			var request = CreateBasicRequest(Method.GET, "/trial_balance/summary");
+            var request = CreateBasicRequest(Method.GET, "/trial_balance/summary?date=" + date.ToString("yyyy-MM-dd"));
 			var response = Client.Execute<TrialBalanceSummaryWrapper>(request);
 
 			if (response != null) return response.trial_balance_summary;
@@ -27,6 +27,12 @@ namespace FreeAgent
 			return null;
 
 		}
+
+        public List<TrialBalanceSummary> TrialBalanceSummary()
+		{
+            return TrialBalanceSummary(DateTime.Now);
+        }
+       
 
 	}
 }
