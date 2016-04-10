@@ -5,6 +5,7 @@ using System.Text;
 using RestSharp;
 using System.Security.Cryptography;
 using FreeAgent.Extensions;
+using RestSharp.Authenticators;
 
 namespace FreeAgent.Authenticators
 {
