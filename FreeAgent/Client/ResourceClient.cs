@@ -69,8 +69,34 @@ namespace FreeAgent
             return null;    
         }
 
+        public List<TSingle> All(int pageSize, int page, Action<RestRequest> customizeRequest = null)
+        {
+            List<TSingle> allItems = new List<TSingle>();
 
-        
+            var request = CreateAllRequest();
+                if (customizeRequest != null) customizeRequest(request);
+
+            AddPaging(request, page, pageSize);
+            var response = Client.Execute<TListWrapper>(request);
+            if (response != null)
+            {
+                var newItems = ListFromWrapper(response);
+                allItems.AddRange(newItems);
+                return allItems;
+            }
+            else if (response == null && page == 1)
+            {
+                return null;
+            }
+            else
+            {
+                return allItems;
+            }
+            return null;
+        }
+
+
+
         public TSingle Get(string id)
         {
             try
@@ -156,7 +182,7 @@ namespace FreeAgent
             return request;
         }
 
-        public virtual void AddPaging(RestRequest request, int page = 1)
+        public virtual void AddPaging(RestRequest request, int page = 1, int pageSize = PageSize)
         {
             request.AddParameter("page", page, ParameterType.GetOrPost);
             request.AddParameter("per_page", PageSize, ParameterType.GetOrPost);
