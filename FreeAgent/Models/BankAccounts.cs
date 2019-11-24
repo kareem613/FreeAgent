@@ -136,7 +136,11 @@ namespace FreeAgent
 
 		public double rebill_factor { get; set; }
 
+        public bool is_money_paid_to_user { get; set; }
+
         public BankTransactionExplanationAttachmentPutModel attachment { get; set; }
+
+        public string paid_user { get; set; }
 
 		/* public string receipt_reference { get; set; }
 
