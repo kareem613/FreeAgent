@@ -71,6 +71,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Client\Client.cs" />
+    <Compile Include="Client\StatementClient.cs" />
     <Compile Include="Exceptions\FreeAgentException.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -78,6 +79,7 @@
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Helpers\RequestHelper.cs" />
     <Compile Include="Models\Company.cs" />
+    <Compile Include="Models\Statement.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\AccessToken.cs" />
     <Compile Include="Models\Categories.cs" />

@@ -123,6 +123,7 @@ namespace FreeAgent
         public TSingle Put(TSingle c)
         {
             var request = CreatePutRequest(c);
+           
             var response = Client.Execute<TSingleWrapper>(request);
 
             if (response != null) return SingleFromWrapper(response);
