@@ -11,7 +11,8 @@ namespace FreeAgent.Models
     public class Statement
     {
         public IEnumerable<BankTransaction> BankTransactions { get; private set; }
-        
+        public string BankAccountURI { get; set; }
+
         public Statement()
         {
             BankTransactions = new List<BankTransaction>();

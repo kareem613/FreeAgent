@@ -18,16 +18,13 @@ namespace FreeAgent
             this.freeAgentClient = freeAgentClient;
         }
 
-        //public override string ResouceName => "bank_transactions";
-
         public void Put(Statement statement)
         {
             var request = CreateBasicRequest(RestSharp.Method.POST, "/statement", "bank_transactions");
-            //request.AddParameter("resource", "bank_transactions/statement", RestSharp.ParameterType.UrlSegment);
-            request.AddParameter("bank_account", "https://api.freeagent.com/v2/bank_accounts/425295",  RestSharp.ParameterType.QueryString);
+            request.AddParameter("bank_account", statement.BankAccountURI,  RestSharp.ParameterType.QueryString);
             request.RequestFormat = DataFormat.Json;
             dynamic data = new ExpandoObject();
-            var bts = new List<BankTransaction>();
+            var bts = new List<dynamic>();
             foreach(var bt in statement.BankTransactions)
             {
                 dynamic t = new ExpandoObject();
@@ -36,11 +33,8 @@ namespace FreeAgent
                 t.description = bt.description;
                 bts.Add(t);
             }
+            data.statement = bts;
             request.AddBody(data);
-            //request.AddParameter("Content-Type", "application/octet-stream", ParameterType.HttpHeader);
-            //string test = "2020-01-16,TESTEST,30.99";
-            //var bytes = Encoding.ASCII.GetBytes(test);
-            //request.AddFile("filenamet.csv", bytes,"filename.csv", "application/octet-stream");
             var response = Client.Execute(request);
 
         }
