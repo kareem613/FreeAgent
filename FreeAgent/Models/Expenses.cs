@@ -10,7 +10,8 @@ namespace FreeAgent
 	
 	public class Expense : UpdatableModel, IRemoveUrlOnSerialization, IRemoveRecurringOnSerialization
 	{
-		
+        public string sales_tax_status;
+
         public Expense()
         {
             //recurring = false;

@@ -114,7 +114,9 @@ namespace FreeAgent
 
 	public class BankTransactionExplanation : UpdatableModel
 	{
-		public string bank_account { get; set; }
+        public string sales_tax_status;
+
+        public string bank_account { get; set; }
 
 		public string bank_transaction { get; set; }
 
