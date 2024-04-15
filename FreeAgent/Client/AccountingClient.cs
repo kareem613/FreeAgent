@@ -19,7 +19,7 @@ namespace FreeAgent
 
 		public List<TrialBalanceSummary> TrialBalanceSummary(DateTime date)
 		{
-            var request = CreateBasicRequest(Method.GET, "/trial_balance/summary?date=" + date.ToString("yyyy-MM-dd"));
+            var request = CreateBasicRequest(Method.GET, "/trial_balance/summary?per_page=50&to_date=" + date.ToString("yyyy-MM-dd"));
 			var response = Client.Execute<TrialBalanceSummaryWrapper>(request);
 
 			if (response != null) return response.trial_balance_summary;
